@@ -6,6 +6,8 @@ public class CameraController : MonoBehaviour {
     void Start() {
         cam = Camera.main;
         cam.orthographic = false;
+        gameObject.transform.position = new Vector3(0, 10, 0);
+        gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
     }
     
     void Update() {
