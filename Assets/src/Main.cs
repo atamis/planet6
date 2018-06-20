@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.U2D;
 
 public class Main : MonoBehaviour {
 
     static GameObject root;
+    public static SpriteAtlas atlas;
 
     GameObject square;
     Ground g;
@@ -16,6 +18,8 @@ public class Main : MonoBehaviour {
 	void Start () {
 
         root = gameObject;
+
+        atlas = Resources.Load<SpriteAtlas>("sprites/atlas");
 
         var cam = Camera.main;
 

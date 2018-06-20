@@ -26,10 +26,10 @@ public class GenericAgent : MonoBehaviour {
 
         model = new GameObject("Model");
         model.transform.parent = gameObject.transform;
-        model.transform.localPosition = new Vector3(0, 0, 0);
+        model.transform.localPosition = Layers.ModelCharacter;
 
         sr = model.AddComponent<SpriteRenderer>();
-        sr.sprite = Resources.Load<Sprite>("sprites/sprites");
+        sr.sprite = Main.atlas.GetSprite("legacy-player");
         model.AddComponent<Billboard>();
 
         nma.destination = new Vector3(10, 0, 0);

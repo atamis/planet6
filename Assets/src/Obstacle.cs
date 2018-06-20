@@ -5,11 +5,24 @@ using UnityEngine.AI;
 
 public class Obstacle : MonoBehaviour {
 
+    GameObject model;
+
     public static Obstacle Create(Vector3 loc) {
         var go = new GameObject("Obstacle");
         go.transform.position = loc;
 
-        return go.AddComponent<Obstacle>();
+        var obs = go.AddComponent<Obstacle>();
+
+        obs.model = new GameObject("Model");
+        obs.model.transform.parent = go.transform;
+        obs.model.transform.localPosition = Layers.ModelEnvironment;
+
+        var sr = obs.model.AddComponent<SpriteRenderer>();
+        sr.sprite = Main.atlas.GetSprite("temp-rock");
+        obs.model.AddComponent<Billboard>();
+
+
+        return obs;
     }
 
     NavMeshObstacle nmo;
