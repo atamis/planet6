@@ -22,7 +22,7 @@ public class GenericAgent : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        nma = gameObject.AddComponent<NavMeshAgent>();
+
 
         model = new GameObject("Model");
         model.transform.parent = gameObject.transform;
@@ -31,7 +31,13 @@ public class GenericAgent : MonoBehaviour {
         sr = model.AddComponent<SpriteRenderer>();
         sr.sprite = Main.atlas.GetSprite("legacy-player");
         model.AddComponent<Billboard>();
+        model.AddComponent<ModelFollowRotation>();
 
+
+        /*
+         * Adjust speed, massively increase angular speed, consider acceleration.
+         */
+        nma = gameObject.AddComponent<NavMeshAgent>();
         nma.destination = new Vector3(10, 0, 0);
 	}
 	
