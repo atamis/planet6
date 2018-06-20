@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: atlas
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingParameters:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: ab8f161adc7a67c4c959ea36bd3b9ef3, type: 3}
+    - {fileID: 21300000, guid: f66519f6443cc7b48bf5d01daebc078d, type: 3}
+    - {fileID: 21300000, guid: a30da5e7a4a6a8949b9a61a9b710cb59, type: 3}
+    - {fileID: 21300000, guid: a67771d1233946d45abb9bb7d3ca0481, type: 3}
+    - {fileID: 21300000, guid: ad4b0cf0184377646b8d58c788d1ea42, type: 3}
+    - {fileID: 21300000, guid: f336c42cdf192b14ea105cb6b7ee576c, type: 3}
+    - {fileID: 21300000, guid: ad4b0cf0184377646b8d58c788d1ea42, type: 3}
+    - {fileID: 21300000, guid: 0ee8b454def1cb349a9f2865bc510e99, type: 3}
+    - {fileID: 21300000, guid: 39c8811822f6f594db5f88c34cdbfe05, type: 3}
+    - {fileID: 21300000, guid: b90505a1bc51e8647919b01fae5b5151, type: 3}
+    - {fileID: 21300000, guid: bad9546f46a603e4fb7aa492543e4a4a, type: 3}
+    - {fileID: 21300000, guid: fdd4eecc1ffafef489c534c2b73646a7, type: 3}
+    - {fileID: 21300000, guid: 7bd12b7a1c4c6fd48a15a728dc42663c, type: 3}
+    - {fileID: 21300000, guid: d91936db553745545bfa8683ae60fb22, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: ab8f161adc7a67c4c959ea36bd3b9ef3, type: 3}
+  - {fileID: 21300000, guid: a30da5e7a4a6a8949b9a61a9b710cb59, type: 3}
+  - {fileID: 21300000, guid: 0ee8b454def1cb349a9f2865bc510e99, type: 3}
+  - {fileID: 21300000, guid: 39c8811822f6f594db5f88c34cdbfe05, type: 3}
+  - {fileID: 21300000, guid: f66519f6443cc7b48bf5d01daebc078d, type: 3}
+  - {fileID: 21300000, guid: d91936db553745545bfa8683ae60fb22, type: 3}
+  - {fileID: 21300000, guid: 7bd12b7a1c4c6fd48a15a728dc42663c, type: 3}
+  - {fileID: 21300000, guid: b90505a1bc51e8647919b01fae5b5151, type: 3}
+  - {fileID: 21300000, guid: ad4b0cf0184377646b8d58c788d1ea42, type: 3}
+  - {fileID: 21300000, guid: f336c42cdf192b14ea105cb6b7ee576c, type: 3}
+  - {fileID: 21300000, guid: fdd4eecc1ffafef489c534c2b73646a7, type: 3}
+  - {fileID: 21300000, guid: a67771d1233946d45abb9bb7d3ca0481, type: 3}
+  - {fileID: 21300000, guid: bad9546f46a603e4fb7aa492543e4a4a, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - base
+  - big-turret-base
+  - lab
+  - planet
+  - big-gun
+  - solar-panel
+  - small-turret-base
+  - relay
+  - capacitor
+  - enemy
+  - small-gun
+  - blood-splat
+  - rocket
+  m_Tag: atlas
+  m_IsVariant: 0
