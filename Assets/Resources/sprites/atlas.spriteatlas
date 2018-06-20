@@ -43,6 +43,7 @@ SpriteAtlas:
     - {fileID: 21300000, guid: 7bd12b7a1c4c6fd48a15a728dc42663c, type: 3}
     - {fileID: 21300000, guid: d91936db553745545bfa8683ae60fb22, type: 3}
     - {fileID: 21300000, guid: 5577dae3a7144714b8379585783f8c81, type: 3}
+    - {fileID: 21300000, guid: 1d35dd661e2437045829e169e20c52c9, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -54,6 +55,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d91936db553745545bfa8683ae60fb22, type: 3}
   - {fileID: 21300000, guid: 7bd12b7a1c4c6fd48a15a728dc42663c, type: 3}
   - {fileID: 21300000, guid: b90505a1bc51e8647919b01fae5b5151, type: 3}
+  - {fileID: 21300000, guid: 1d35dd661e2437045829e169e20c52c9, type: 3}
   - {fileID: 21300000, guid: ad4b0cf0184377646b8d58c788d1ea42, type: 3}
   - {fileID: 21300000, guid: 5577dae3a7144714b8379585783f8c81, type: 3}
   - {fileID: 21300000, guid: f336c42cdf192b14ea105cb6b7ee576c, type: 3}
@@ -69,6 +71,7 @@ SpriteAtlas:
   - solar-panel
   - small-turret-base
   - relay
+  - temp-rock
   - capacitor
   - legacy-player
   - enemy
