@@ -31,6 +31,7 @@ public class Obstacle : MonoBehaviour {
 	void Start () {
         nmo = gameObject.AddComponent<NavMeshObstacle>();
         nmo.carving = true;
+        nmo.size = new Vector3(0.5f, 0.5f, 0.5f);
 	}
 	
 	// Update is called once per frame
