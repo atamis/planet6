@@ -8,6 +8,7 @@ public class SmoothLightingManager : MonoBehaviour {
     RenderTexture rt;
     Texture2D lightTex;
     Texture2D blackTex;
+    SmoothLightCamera slc;
 
     public static SmoothLightingManager Create() {
         var go = new GameObject("SmoothLightingManager");
@@ -18,13 +19,16 @@ public class SmoothLightingManager : MonoBehaviour {
 
         slm.rt = new RenderTexture(Screen.width, Screen.height, 24);
 
+        slm.slc = SmoothLightCamera.Create(slm.rt);
+        //slm.slc.GetComponent<Camera>().targetTexture = slm.rt;
+
         var renderer = go.GetComponent<MeshRenderer>();
 
         //renderer.material.shader = Shader.Find("Unlit/Transparent");
         renderer.material.shader = Resources.Load<Shader>("shaders/ShadowShader");
         renderer.material.mainTexture = slm.rt;
 
-        slm.lightTex = Resources.Load<Texture2D>("sprites/light-template");
+        slm.lightTex = Resources.Load<Texture2D>("sprites/light-mask");
         slm.blackTex = createBlackTex();
         
         return slm;
@@ -56,12 +60,13 @@ public class SmoothLightingManager : MonoBehaviour {
         //var loc = pos - center; ;
         //print(loc);
 
-        var width = lightTex.width * 3;
-        var height = lightTex.height * 3;
+        var dim = new Vector3(lightTex.width, lightTex.height) * 20;
         
-        var rect = new Rect(pos.x, pos.y, lightTex.width*3, lightTex.height*3);
 
-        var mat = new Material(Shader.Find("Unlit/PseudoBlit"));
+
+        var rect = new Rect(pos - dim/2, dim);
+
+        var mat = new Material(Shader.Find("Unlit/GreyscaleMask"));
         mat.mainTexture = lightTex;
 
         Graphics.DrawTexture(rect, lightTex, mat);

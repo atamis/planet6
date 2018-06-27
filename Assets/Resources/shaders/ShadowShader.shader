@@ -57,7 +57,9 @@ Shader "Unlit/ShadowShader"
 			{
 				float2 screenUV = (i.screenPos.xy / i.screenPos.z) * 0.5f + 0.5f;
 				// sample the texture
-				fixed4 col = tex2D(_MainTex, screenUV.xy);
+				//fixed4 col = tex2D(_MainTex, screenUV.xy);
+				fixed4 col = fixed4(0, 0, 0, 1-tex2D(_MainTex, screenUV).x);
+
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
 				return col;

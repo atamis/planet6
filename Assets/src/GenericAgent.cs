@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class GenericAgent : MonoBehaviour {
 
     GameObject model;
+    GameObject lightModel;
 
     public static GenericAgent Create(Vector3 loc) {
         var go = new GameObject("GenericAgent");
@@ -32,6 +33,15 @@ public class GenericAgent : MonoBehaviour {
         sr.sprite = Main.atlas.GetSprite("legacy-player");
         model.AddComponent<Billboard>();
         model.AddComponent<ModelFollowRotation>();
+
+        lightModel = new GameObject("LightModel");
+        lightModel.transform.parent = gameObject.transform;
+        lightModel.transform.localPosition = Layers.ModelCharacter;
+        lightModel.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        var mf = SimpleQuad.ImmediateAdd(lightModel, 2, 2);
+        var mr = lightModel.GetComponent<MeshRenderer>();
+        mr.material = new Material(Shader.Find("Custom/Circle2"));
+        lightModel.layer = 8;
 
 
         /*
