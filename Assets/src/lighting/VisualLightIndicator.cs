@@ -30,7 +30,7 @@ public class VisualLightIndicator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         var mr = GetComponent<MeshRenderer>();
-		if (probe.inLight) {
+		if (probe.InLight) {
             mr.material.mainTexture = onTex;
         } else {
             mr.material.mainTexture = offTex;
