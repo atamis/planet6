@@ -32,6 +32,7 @@ public class LightHalo : MonoBehaviour {
             var mf = SimpleQuad.ImmediateAdd(lightModel, radius, radius);
             lastRadius = radius;
             var mr = lightModel.GetComponent<MeshRenderer>();
+            lightModel.AddComponent<MeshCollider>();
             mr.material = new Material(Shader.Find("Custom/Circle2"));
         }
     }

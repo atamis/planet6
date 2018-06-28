@@ -18,6 +18,9 @@ public class Main : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        // 8 is CustomLight, because CustomLight collision is used to probe lighting.
+        Physics.IgnoreLayerCollision(0, 8);
+
         root = gameObject;
 
         atlas = Resources.Load<SpriteAtlas>("sprites/atlas");
@@ -33,10 +36,13 @@ public class Main : MonoBehaviour {
         ga = GenericAgent.Create(new Vector3(5, 1, 5));
 
         o = Obstacle.Create(new Vector3(3, 0, 3));
+        o.gameObject.AddComponent<SmoothLightProbe>();
         Obstacle.Create(new Vector3(1, 0, 1));
 
         slm = SmoothLightingManager.Create();
-        
+
+
+        VisualLightIndicator.Create(new Vector3(7, 0.2f, 7));
     }
 
     // Update is called once per frame
