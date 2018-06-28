@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class VisualLightIndicator : MonoBehaviour {
 
-    public static Texture2D onTex = Texture2D.whiteTexture;
-    public static Texture2D offTex = Texture2D.blackTexture;
+    public Texture2D onTex;
+    public Texture2D offTex;
 
     private MeshFilter mf;
     private SmoothLightProbe probe;
@@ -22,9 +22,10 @@ public class VisualLightIndicator : MonoBehaviour {
         probe = gameObject.AddComponent<SmoothLightProbe>();
 
         mf = SimpleQuad.ImmediateAdd(gameObject, 0.5f, 0.5f);
-        var mr = GetComponent<MeshRenderer>();
-        //mr.material.shader = Shader.Find("Unlit/Color");
-	}
+
+        onTex = Texture2D.whiteTexture;
+        offTex = Texture2D.blackTexture;
+    }
 	
 	// Update is called once per frame
 	void Update () {
