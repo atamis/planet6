@@ -11,7 +11,7 @@ public class Main : MonoBehaviour {
 
     GameObject square;
     Ground g;
-    Obstacle o;
+    GameObject o;
     GenericAgent ga;
     SmoothLightingManager slm;
 
@@ -36,7 +36,7 @@ public class Main : MonoBehaviour {
         ga = GenericAgent.Create(new Vector3(5, 1, 5));
 
         o = Obstacle.Create(new Vector3(3, 0, 3));
-        o.gameObject.AddComponent<SmoothLightProbe>();
+        o.AddComponent<SmoothLightProbe>();
         Obstacle.Create(new Vector3(1, 0, 1));
 
         slm = SmoothLightingManager.Create();
