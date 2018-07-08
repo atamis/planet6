@@ -2,10 +2,12 @@
 
  Shader "Custom/Circle2" {
      Properties {
-         _Color ("Color", Color) = (1,0,0,0)
+         _Color ("Color", Color) = (1,1,1,1)
      }
      SubShader {
-
+		Tags {"Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" }
+		Blend SrcAlpha OneMinusSrcAlpha 
+		ZWrite Off
 
          Pass {
              CGPROGRAM
@@ -45,7 +47,7 @@
 					 // necessary, otherwise the shader won't compile.
 					 return fixed4(0, 0, 0, 0);
                  } else {
-                     return fixed4(1,1,1,1);
+                     return _Color;
                  }
              }
              ENDCG
