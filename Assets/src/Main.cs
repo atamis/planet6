@@ -20,6 +20,7 @@ public class Main : MonoBehaviour {
 
         // 8 is CustomLight, because CustomLight collision is used to probe lighting.
         Physics.IgnoreLayerCollision(0, 8);
+        Camera.main.cullingMask = Camera.main.cullingMask - (1 << 8);
 
         root = gameObject;
 
@@ -37,10 +38,17 @@ public class Main : MonoBehaviour {
 
         o = Obstacle.Create(new Vector3(3, 0, 3));
         o.AddComponent<SmoothLightProbe>();
-        Obstacle.Create(new Vector3(1, 0, 1));
+        Obstacle.Create(new Vector3(2, 0, 2));
 
-        slm = SmoothLightingManager.Create();
+        //slm = SmoothLightingManager.Create();
 
+        var baseGo = new GameObject("Base");
+        baseGo.transform.position = new Vector3(0, Layers.Environment, 0);
+        baseGo.AddComponent<BaseBuilding>();
+
+        var relayGo = new GameObject("Relay");
+        relayGo.transform.position = new Vector3(-3, Layers.Environment, 0);
+        relayGo.AddComponent<RelayBuilding>();
 
         VisualLightIndicator.Create(new Vector3(7, 0.2f, 7));
     }
