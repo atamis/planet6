@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(WorldObject))]
+[RequireComponent(typeof(Powerable))]
 public class Building : MonoBehaviour {
     
-    void Start() {
+    void OnEnable() {
         var nmo = GetComponent<NavMeshObstacle>();
         nmo.carving = false;
     }
@@ -15,4 +16,5 @@ public class Building : MonoBehaviour {
 	void Update () {
 		
 	}
+
 }

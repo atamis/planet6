@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(Building))]
+[RequireComponent(typeof(PowerBroadcaster))]
 public class BaseBuilding : MonoBehaviour {
 
 	// Use this for initialization
@@ -13,10 +14,16 @@ public class BaseBuilding : MonoBehaviour {
 
         var nmo = GetComponent<NavMeshObstacle>();
         nmo.size = new Vector3(2.5f, 2.5f, 2.5f);
+
+        var powerable = GetComponent<Powerable>();
+        powerable.permanentlyPowered = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    
+
 }

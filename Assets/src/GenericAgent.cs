@@ -35,7 +35,7 @@ public class GenericAgent : MonoBehaviour {
         model.AddComponent<ModelFollowRotation>();
 
         lh = gameObject.AddComponent<LightHalo>();
-        lh.radius = 4;
+        lh.radius = 10;
 
         /*
          * Adjust speed, massively increase angular speed, consider acceleration.

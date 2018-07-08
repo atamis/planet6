@@ -31,6 +31,7 @@ public class CameraController : MonoBehaviour {
 
         trans = trans + new Vector3(0, 0, Input.GetAxis("Mouse ScrollWheel"));
 
+        // TODO: if orthographic, SLC zoom has to be adjusted too.
         // Normalize so diagonal movement isn't bizarrely fast
         gameObject.transform.Translate(trans.normalized * 0.2f);
     }

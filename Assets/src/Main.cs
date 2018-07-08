@@ -20,7 +20,9 @@ public class Main : MonoBehaviour {
 
         // 8 is CustomLight, because CustomLight collision is used to probe lighting.
         Physics.IgnoreLayerCollision(0, 8);
-        Camera.main.cullingMask = Camera.main.cullingMask - (1 << 8);
+        // 9 is Power.
+        Physics.IgnoreLayerCollision(0, 9);
+        Camera.main.cullingMask = Camera.main.cullingMask - (1 << 7);
 
         root = gameObject;
 
@@ -40,7 +42,7 @@ public class Main : MonoBehaviour {
         o.AddComponent<SmoothLightProbe>();
         Obstacle.Create(new Vector3(2, 0, 2));
 
-        //slm = SmoothLightingManager.Create();
+        slm = SmoothLightingManager.Create();
 
         var baseGo = new GameObject("Base");
         baseGo.transform.position = new Vector3(0, Layers.Environment, 0);
@@ -51,6 +53,9 @@ public class Main : MonoBehaviour {
         relayGo.AddComponent<RelayBuilding>();
 
         VisualLightIndicator.Create(new Vector3(7, 0.2f, 7));
+        var lightGo = new GameObject("Light");
+        lightGo.transform.position = new Vector3(7, Layers.Environment, -7);
+        lightGo.AddComponent<LightBuilding>();
     }
 
     // Update is called once per frame
@@ -59,5 +64,17 @@ public class Main : MonoBehaviour {
         var deltaX = (float) (Math.Cos(Time.time) * 0.5);
 
         square.transform.Translate(deltaX, 0, 0);
-	}
+
+        if (Input.GetMouseButtonDown(1) && !Input.GetKey(KeyCode.LeftShift)) {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitinfo;
+            if (Physics.Raycast(ray.origin, ray.direction, out hitinfo)) {
+                var relayGo = new GameObject("Relay");
+                relayGo.transform.position = new Vector3(hitinfo.point.x, Layers.Environment, hitinfo.point.z);
+                relayGo.AddComponent<RelayBuilding>();
+            }
+
+        }
+
+    }
 }

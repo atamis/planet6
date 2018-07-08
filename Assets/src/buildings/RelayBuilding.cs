@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Building))]
+[RequireComponent(typeof(PowerBroadcaster))]
 public class RelayBuilding : MonoBehaviour {
 
 	// Use this for initialization
@@ -13,6 +14,5 @@ public class RelayBuilding : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 }
