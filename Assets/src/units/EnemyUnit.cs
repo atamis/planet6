@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(WorldObject))]
 [RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(Damagable))]
+[RequireComponent(typeof(Damageable))]
 public class EnemyUnit : MonoBehaviour {
 
 	// Use this for initialization
@@ -48,13 +48,13 @@ public class EnemyUnit : MonoBehaviour {
     IEnumerator PeriodicallyDealDamage() {
         while(true) {
             // TODO: Tune weapon range.
-            Collider[] hits = Physics.OverlapSphere(transform.position, 1f, Damagable.DamagableMask);
+            Collider[] hits = Physics.OverlapSphere(transform.position, 1f, Damageable.DamageableMask);
 
             if (hits.Length > 0) {
                 var col = hits[0];
 
                 // In parent because we just hit the model on layer 10, not the real game object.
-                var damageable = col.gameObject.GetComponentInParent<Damagable>();
+                var damageable = col.gameObject.GetComponentInParent<Damageable>();
                 var wo = col.gameObject.GetComponentInParent<WorldObject>();
 
                 if (damageable && wo) {

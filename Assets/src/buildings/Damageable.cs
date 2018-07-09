@@ -7,9 +7,9 @@ using UnityEngine.Events;
 public class DamagedEvent : UnityEvent<float> { }
 
 
-public class Damagable : MonoBehaviour {
+public class Damageable : MonoBehaviour {
 
-    public static readonly int DamagableMask = 1 << 10;
+    public static readonly int DamageableMask = 1 << 10;
 
     public DamagedEvent damaged;
 

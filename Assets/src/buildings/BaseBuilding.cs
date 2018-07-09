@@ -18,9 +18,9 @@ public class BaseBuilding : MonoBehaviour {
         var powerable = GetComponent<Powerable>();
         powerable.permanentlyPowered = true;
 
-        var damagable = GetComponent<Damagable>();
-        damagable.invulnerable = true;
-        damagable.damageCollider.radius = 1.5f;
+        var damageable = GetComponent<Damageable>();
+        damageable.invulnerable = true;
+        damageable.damageCollider.radius = 1.5f;
 	}
 	
 	// Update is called once per frame

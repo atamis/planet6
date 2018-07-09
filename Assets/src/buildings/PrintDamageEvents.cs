@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Damagable))]
+[RequireComponent(typeof(Damageable))]
 public class PrintDamageEvents : MonoBehaviour {
-    private Damagable damageable;
+    private Damageable damageable;
     void Start() {
-        damageable = GetComponent<Damagable>();
+        damageable = GetComponent<Damageable>();
         damageable.damaged.AddListener(PrintDamage);
     }
 

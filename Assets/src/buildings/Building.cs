@@ -6,11 +6,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(WorldObject))]
 [RequireComponent(typeof(NavMeshObstacle))]
 [RequireComponent(typeof(Powerable))]
-[RequireComponent(typeof(Damagable))]
+[RequireComponent(typeof(Damageable))]
 [RequireComponent(typeof(BlinkOnDamage))]
 public class Building : MonoBehaviour {
 
-    private Damagable damagable;
+    private Damageable damageable;
 
     void OnEnable() {
         var nmo = GetComponent<NavMeshObstacle>();
@@ -19,12 +19,12 @@ public class Building : MonoBehaviour {
         var wo = GetComponent<WorldObject>();
         wo.team = Team.Player;
 
-        damagable = GetComponent<Damagable>();
+        damageable = GetComponent<Damageable>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if (damagable.IsDead()) {
+		if (damageable.IsDead()) {
             Destroy(gameObject);
         }
 	}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(WorldObject))]
-[RequireComponent(typeof(Damagable))]
+[RequireComponent(typeof(Damageable))]
 public class BlinkOnDamage : MonoBehaviour {
     private float lerper;
     private SpriteRenderer sr;
@@ -16,7 +16,7 @@ public class BlinkOnDamage : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        GetComponent<Damagable>().damaged.AddListener(ResetLerper);
+        GetComponent<Damageable>().damaged.AddListener(ResetLerper);
         // God I hope there's only 1 sprite
         sr = GetComponent<WorldObject>().sr;
 	}
