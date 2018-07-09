@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     Camera cam;
+    private int defaultMask;
     void Start() {
         cam = Camera.main;
         cam.orthographic = false;
+
+        defaultMask = cam.cullingMask ^ 1 << 8; // remove CustomLight
+
+        cam.cullingMask = defaultMask; // Remove CustomLight
+
         gameObject.transform.position = new Vector3(0, 10, 0);
         gameObject.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
     }
@@ -34,5 +40,11 @@ public class CameraController : MonoBehaviour {
         // TODO: if orthographic, SLC zoom has to be adjusted too.
         // Normalize so diagonal movement isn't bizarrely fast
         gameObject.transform.Translate(trans.normalized * 0.2f);
+       
+
+        if (Input.GetKey(KeyCode.Q)) {
+            // TODO: debounce
+            cam.cullingMask ^= 1 << 9; // Toggle power
+        }
     }
 }

@@ -9,7 +9,6 @@ public class SmoothLightCamera : MonoBehaviour {
 
         var go = new GameObject("Smooth Light Camera");
         go.transform.parent = Camera.main.transform;
-        Camera.main.cullingMask = Camera.main.cullingMask - mask;
         go.transform.localPosition = new Vector3(0, 0, 0);
         go.transform.localEulerAngles = new Vector3(0, 0, 0);
 
