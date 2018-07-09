@@ -10,6 +10,7 @@ public class Main : MonoBehaviour {
     public static SpriteAtlas atlas;
 
     GameObject square;
+    GameObject indicator;
     Ground g;
     GameObject o;
     GenericAgent ga;
@@ -60,6 +61,12 @@ public class Main : MonoBehaviour {
         var turretGo = new GameObject("Turret");
         turretGo.transform.position = new Vector3(3, Layers.Environment, 0);
         turretGo.AddComponent<LaserTurretBuilding>();
+
+        indicator = new GameObject("Indicator");
+        indicator.transform.position = new Vector3(0, Layers.Environment, 0);
+        SimpleQuad.ImmediateAdd(indicator, 1, 1);
+        indicator.AddComponent<RoundLocation>();
+        indicator.GetComponent<MeshRenderer>().material.mainTexture = Texture2D.blackTexture;
     }
 
     // Update is called once per frame
@@ -69,9 +76,16 @@ public class Main : MonoBehaviour {
 
         square.transform.Translate(deltaX, 0, 0);
 
+
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitinfo;
+        if (Input.GetKey(KeyCode.E) && Physics.Raycast(ray.origin, ray.direction, out hitinfo)) {
+            indicator.transform.position = new Vector3(hitinfo.point.x, Layers.Environment, hitinfo.point.z);
+        }
+
+
         if (Input.GetMouseButtonDown(1) && !Input.GetKey(KeyCode.LeftShift)) {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitinfo;
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray.origin, ray.direction, out hitinfo)) {
                 var relayGo = new GameObject("Relay");
                 relayGo.transform.position = new Vector3(hitinfo.point.x, Layers.Environment, hitinfo.point.z);
@@ -82,8 +96,7 @@ public class Main : MonoBehaviour {
 
 
         if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift)) {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitinfo;
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray.origin, ray.direction, out hitinfo)) {
                 var go = new GameObject("Some Enemy");
                 go.transform.position = hitinfo.point;
