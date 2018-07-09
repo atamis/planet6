@@ -1,8 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class DamagedEvent : UnityEvent<float> { }
+
 
 public class Damagable : MonoBehaviour {
+
+    public DamagedEvent damaged;
 
     public float currentHP;
 
@@ -25,9 +32,8 @@ public class Damagable : MonoBehaviour {
     public void InflictDamage(float damage) {
         if (!invulnerable) {
             currentHP -= damage;
+            damaged.Invoke(damage);
         }
-
-        print(gameObject.name + ": " + currentHP + "/" + maxHP);
     }
 
     public bool IsDead() {
@@ -48,7 +54,7 @@ public class Damagable : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        damaged = new DamagedEvent();
 	}
 	
 	// Update is called once per frame
