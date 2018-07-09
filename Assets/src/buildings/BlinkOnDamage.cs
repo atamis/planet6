@@ -18,7 +18,7 @@ public class BlinkOnDamage : MonoBehaviour {
     void Start () {
         GetComponent<Damagable>().damaged.AddListener(ResetLerper);
         // God I hope there's only 1 sprite
-        sr = GetComponentInChildren<SpriteRenderer>();
+        sr = GetComponent<WorldObject>().sr;
 	}
 
     void ResetLerper(float _a) {

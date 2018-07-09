@@ -5,12 +5,14 @@ using UnityEngine.AI;
 
 public class WorldObject : MonoBehaviour {
 
+    public SpriteRenderer sr;
+
     public Sprite sprite {
         get {
-            return model.GetComponent<SpriteRenderer>().sprite;
+            return sr.sprite;
         }
         set {
-            model.GetComponent<SpriteRenderer>().sprite = value;
+            sr.sprite = value;
         }
     }
 
@@ -24,7 +26,7 @@ public class WorldObject : MonoBehaviour {
         model.transform.localPosition = Layers.ModelEnvironment;
         model.AddComponent<Billboard>();
         model.AddComponent<ModelFollowRotation>();
-        var sr = model.AddComponent<SpriteRenderer>();
+        sr = model.AddComponent<SpriteRenderer>();
         
     }
 
