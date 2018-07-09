@@ -62,7 +62,8 @@ public class Damageable : MonoBehaviour {
         damageModel.layer = 10;
         damageCollider = damageModel.AddComponent<SphereCollider>();
         damageCollider.radius = 0.25f;
-
+        
+        damaged = new DamagedEvent();
     }
 
     void OnDestroy() {
@@ -71,7 +72,6 @@ public class Damageable : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        damaged = new DamagedEvent();
 	}
 	
 	// Update is called once per frame
