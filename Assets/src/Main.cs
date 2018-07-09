@@ -56,6 +56,10 @@ public class Main : MonoBehaviour {
         var lightGo = new GameObject("Light");
         lightGo.transform.position = new Vector3(7, Layers.Environment, -7);
         lightGo.AddComponent<LightBuilding>();
+
+        var turretGo = new GameObject("Turret");
+        turretGo.transform.position = new Vector3(3, Layers.Environment, 0);
+        turretGo.AddComponent<LaserTurretBuilding>();
     }
 
     // Update is called once per frame

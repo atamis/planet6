@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(WorldObject))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Damageable))]
+[RequireComponent(typeof(BlinkOnDamage))]
 public class EnemyUnit : MonoBehaviour {
 
 	// Use this for initialization
