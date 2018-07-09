@@ -9,10 +9,11 @@ public class DamagedEvent : UnityEvent<float> { }
 
 public class Damagable : MonoBehaviour {
 
+    public static readonly int DamagableMask = 1 << 10;
+
     public DamagedEvent damaged;
 
     public float currentHP;
-
     private float _maxHP;
     public float maxHP {
         get {
@@ -28,6 +29,9 @@ public class Damagable : MonoBehaviour {
 
     // Also implies undying.
     public bool invulnerable;
+
+    private GameObject damageModel;
+    public SphereCollider damageCollider;
 
     public void InflictDamage(float damage) {
         if (!invulnerable) {
@@ -50,10 +54,23 @@ public class Damagable : MonoBehaviour {
         // can you even have race conditions in single threaded code?
         _maxHP = 10;
         invulnerable = false;
+
+        damageModel = new GameObject("Damage Model");
+        damageModel.transform.parent = gameObject.transform;
+        damageModel.transform.localPosition = Layers.ModelCharacter; // TODO: maybe not the character layer?
+        damageModel.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        damageModel.layer = 10;
+        damageCollider = damageModel.AddComponent<SphereCollider>();
+        damageCollider.radius = 0.25f;
+
     }
 
-	// Use this for initialization
-	void Start () {
+    void OnDestroy() {
+        Destroy(damageModel);
+    }
+
+    // Use this for initialization
+    void Start () {
         damaged = new DamagedEvent();
 	}
 	

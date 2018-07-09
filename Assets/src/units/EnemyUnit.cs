@@ -48,12 +48,12 @@ public class EnemyUnit : MonoBehaviour {
     IEnumerator PeriodicallyDealDamage() {
         while(true) {
             // TODO: Tune weapon range.
-            Collider[] hits = Physics.OverlapSphere(transform.position, 1f, 1 << 9);
+            Collider[] hits = Physics.OverlapSphere(transform.position, 1f, Damagable.DamagableMask);
 
             if (hits.Length > 0) {
                 var col = hits[0];
 
-                // In parent because we just hit the model on layer 9, not the real game object.
+                // In parent because we just hit the model on layer 10, not the real game object.
                 var damageable = col.gameObject.GetComponentInParent<Damagable>();
                 var wo = col.gameObject.GetComponentInParent<WorldObject>();
 

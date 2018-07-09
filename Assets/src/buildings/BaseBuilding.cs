@@ -20,6 +20,7 @@ public class BaseBuilding : MonoBehaviour {
 
         var damagable = GetComponent<Damagable>();
         damagable.invulnerable = true;
+        damagable.damageCollider.radius = 1.5f;
 	}
 	
 	// Update is called once per frame
