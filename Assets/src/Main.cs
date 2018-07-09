@@ -36,17 +36,17 @@ public class Main : MonoBehaviour {
         square.transform.position = new Vector3(0, 0, 0);
 
         g = Ground.Create();
-        ga = GenericAgent.Create(new Vector3(5, 1, 5));
+        //ga = GenericAgent.Create(new Vector3(5, 1, 5));
 
         o = Obstacle.Create(new Vector3(3, 0, 3));
         o.AddComponent<SmoothLightProbe>();
         Obstacle.Create(new Vector3(2, 0, 2));
 
-        slm = SmoothLightingManager.Create();
+        //slm = SmoothLightingManager.Create();
 
         var baseGo = new GameObject("Base");
         baseGo.transform.position = new Vector3(0, Layers.Environment, 0);
-        baseGo.AddComponent<BaseBuilding>();
+        BuildingManager.instance.baseBuilding = baseGo.AddComponent<BaseBuilding>();
 
         var relayGo = new GameObject("Relay");
         relayGo.transform.position = new Vector3(-3, Layers.Environment, 0);
@@ -75,6 +75,20 @@ public class Main : MonoBehaviour {
             }
 
         }
+
+
+        if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift)) {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitinfo;
+            if (Physics.Raycast(ray.origin, ray.direction, out hitinfo)) {
+                var go = new GameObject("Some Enemy");
+                go.transform.position = hitinfo.point;
+                go.AddComponent<EnemyUnit>();
+            }
+
+        }
+
+
 
     }
 }

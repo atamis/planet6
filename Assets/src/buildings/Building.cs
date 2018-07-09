@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(WorldObject))]
+[RequireComponent(typeof(NavMeshObstacle))]
 [RequireComponent(typeof(Powerable))]
 public class Building : MonoBehaviour {
     

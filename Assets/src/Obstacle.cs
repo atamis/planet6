@@ -13,7 +13,12 @@ public class Obstacle {
 
         var wo = go.AddComponent<WorldObject>();
         wo.sprite = Main.atlas.GetSprite("temp-rock");
-        
+
+        var nmo = go.AddComponent<NavMeshObstacle>();
+        nmo.carving = true;
+        nmo.size = new Vector3(0.5f, 0.5f, 0.5f);
+
+
         return go;
     }
     

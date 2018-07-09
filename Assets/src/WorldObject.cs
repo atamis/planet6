@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshObstacle))]
 public class WorldObject : MonoBehaviour {
 
     public Sprite sprite {
@@ -22,11 +21,9 @@ public class WorldObject : MonoBehaviour {
         model.transform.parent = gameObject.transform;
         model.transform.localPosition = Layers.ModelEnvironment;
         model.AddComponent<Billboard>();
+        model.AddComponent<ModelFollowRotation>();
         var sr = model.AddComponent<SpriteRenderer>();
-
-        var nmo = GetComponent<NavMeshObstacle>();
-        nmo.carving = true;
-        nmo.size = new Vector3(0.5f, 0.5f, 0.5f);
+        
     }
 
 	// Use this for initialization
