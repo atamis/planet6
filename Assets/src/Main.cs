@@ -6,7 +6,7 @@ using UnityEngine.U2D;
 
 public class Main : MonoBehaviour {
 
-    static GameObject root;
+    public static GameObject root;
     public static SpriteAtlas atlas;
 
     GameObject square;
@@ -28,6 +28,8 @@ public class Main : MonoBehaviour {
         root = gameObject;
 
         atlas = Resources.Load<SpriteAtlas>("sprites/atlas");
+
+        var instance = BuildingManager.instance;
 
         var cam = Camera.main;
 
