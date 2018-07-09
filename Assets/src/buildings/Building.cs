@@ -7,6 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshObstacle))]
 [RequireComponent(typeof(Powerable))]
 [RequireComponent(typeof(Damagable))]
+[RequireComponent(typeof(BlinkOnDamage))]
 public class Building : MonoBehaviour {
 
     private Damagable damagable;
