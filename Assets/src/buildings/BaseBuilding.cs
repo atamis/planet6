@@ -17,6 +17,9 @@ public class BaseBuilding : MonoBehaviour {
 
         var powerable = GetComponent<Powerable>();
         powerable.permanentlyPowered = true;
+
+        var damagable = GetComponent<Damagable>();
+        damagable.invulnerable = true;
 	}
 	
 	// Update is called once per frame

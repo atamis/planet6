@@ -16,6 +16,8 @@ public class WorldObject : MonoBehaviour {
 
     private GameObject model;
 
+    public Team team;
+
     void Awake() {
         model = new GameObject("Model");
         model.transform.parent = gameObject.transform;
