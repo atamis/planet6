@@ -33,6 +33,10 @@ public class Powerable : MonoBehaviour {
         collider.radius = 0.25f;
     }
 
+    void OnDestroy() {
+        Destroy(powerModel);
+    }
+
 	// Use this for initialization
 	void Start () {
         powered = false;
