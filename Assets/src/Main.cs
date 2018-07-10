@@ -27,6 +27,7 @@ public class Main : MonoBehaviour {
         root = gameObject;
 
         atlas = Resources.Load<SpriteAtlas>("sprites/atlas");
+        
 
         var instance = BuildingManager.instance;
 
@@ -44,7 +45,7 @@ public class Main : MonoBehaviour {
         o.AddComponent<SmoothLightProbe>();
         Obstacle.Create(new Vector3(2, 0, 2));
 
-        //slm = SmoothLightingManager.Create();
+        slm = SmoothLightingManager.Create();
 
         var baseGo = new GameObject("Base");
         baseGo.transform.position = new Vector3(0, Layers.Environment, 0);
@@ -80,25 +81,11 @@ public class Main : MonoBehaviour {
         if (Input.GetMouseButtonDown(1) && !Input.GetKey(KeyCode.LeftShift)) {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray.origin, ray.direction, out hitinfo)) {
-                var relayGo = new GameObject("Relay");
-                relayGo.transform.position = new Vector3(hitinfo.point.x, Layers.Environment, hitinfo.point.z);
-                relayGo.AddComponent<RelayBuilding>();
+                var spawner = new GameObject("Spawner");
+                spawner.transform.position = new Vector3(hitinfo.point.x, Layers.Environment, hitinfo.point.z);
+                spawner.AddComponent<EnemySpawner>();
             }
 
         }
-
-
-        if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftShift)) {
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray.origin, ray.direction, out hitinfo)) {
-                var go = new GameObject("Some Enemy");
-                go.transform.position = hitinfo.point;
-                go.AddComponent<EnemyUnit>();
-            }
-
-        }
-
-
-
     }
 }
