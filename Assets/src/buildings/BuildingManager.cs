@@ -36,7 +36,11 @@ class BuildingManager : MonoBehaviour {
 
     public BaseBuilding baseBuilding;
 
-    private IBuildingFactory[] types = { new BuildingFactory<RelayBuilding>(), new BuildingFactory<LaserTurretBuilding>() };
+    private IBuildingFactory[] types = {
+        new BuildingFactory<RelayBuilding>(),
+        new BuildingFactory<LaserTurretBuilding>(),
+        new BuildingFactory<LightBuilding>()
+    };
     private Sprite[] sprites;
 
     private int indicatorIndex;
@@ -46,7 +50,8 @@ class BuildingManager : MonoBehaviour {
 
         sprites = new Sprite[] {
             Main.atlas.GetSprite("relay"),
-            Main.atlas.GetSprite("small-turret-base")
+            Main.atlas.GetSprite("small-turret-base"),
+            Main.atlas.GetSprite("capacitor")
         };
 
         indicatorIndex = -1;
@@ -64,7 +69,7 @@ class BuildingManager : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKey(KeyCode.Alpha1)) {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
             Destroy(indicator);
             indicator = null;
             if (indicatorIndex == 0) {
@@ -74,7 +79,7 @@ class BuildingManager : MonoBehaviour {
             indicatorIndex = 0;
             print("Selected " + types[indicatorIndex].Name());
         }
-        if (Input.GetKey(KeyCode.Alpha2)) {
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
             Destroy(indicator);
             indicator = null;
             if (indicatorIndex == 1) {
@@ -82,6 +87,17 @@ class BuildingManager : MonoBehaviour {
                 return;
             }
             indicatorIndex = 1;
+            print("Selected " + types[indicatorIndex].Name());
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            Destroy(indicator);
+            indicator = null;
+            if (indicatorIndex == 2) {
+                indicatorIndex = -1;
+                return;
+            }
+            indicatorIndex = 2;
             print("Selected " + types[indicatorIndex].Name());
         }
 
