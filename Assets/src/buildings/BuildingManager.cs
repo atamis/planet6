@@ -91,7 +91,13 @@ class BuildingManager : MonoBehaviour {
             }
 
             if (Input.GetMouseButton(0)) {
-                types[indicatorIndex].Instantiate(indicator.transform.position);
+                var tar = indicator.transform.position;
+                Collider[] cs = Physics.OverlapSphere(tar, 0, Damageable.DamageableMask); // TODO: some other mask, maybe power?
+                if (cs.Length < 1) {
+                    types[indicatorIndex].Instantiate(indicator.transform.position);
+                }  else {
+                    print("Building blocked by " + cs.Length + " colliders");
+                }
             }
         }
     }
