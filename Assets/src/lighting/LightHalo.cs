@@ -19,7 +19,7 @@ public class LightHalo : MonoBehaviour {
         lightModel.transform.localPosition = Layers.ModelCharacter; // TODO: maybe not the character layer?
         lightModel.transform.localRotation = Quaternion.Euler(0, 0, 0);
         lightModel.layer = 8;
-        lightModel.AddComponent<MeshCollider>();
+        lightModel.AddComponent<SphereCollider>();
 
         lastRadius = radius - 1; // Force quad remake in Update()
     }
@@ -36,8 +36,9 @@ public class LightHalo : MonoBehaviour {
             mr.material = new Material(Shader.Find("Custom/Circle2"));
 
             var mf = lightModel.GetComponent<MeshFilter>();
-            var mc = lightModel.GetComponent<MeshCollider>();
-            mc.sharedMesh = mf.sharedMesh;
+            var mc = lightModel.GetComponent<SphereCollider>();
+            mc.radius = radius / 2; // TODO: Because lighthalo's "radius" is actually a diameter (see powerbroadcaster);
+            //mc.sharedMesh = mf.sharedMesh;
             // TODO: this causes a "cleaning the mesh failed" error
             // sometimes. This is related to 0 size meshes (like when
             // the lighthalo radius is 0), but a fix is not immediately
