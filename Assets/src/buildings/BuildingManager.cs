@@ -92,6 +92,7 @@ class BuildingManager : MonoBehaviour {
 
             if (Input.GetMouseButton(0)) {
                 var tar = indicator.transform.position;
+                // TODO: some other mask, maybe power? It currently ignores 
                 Collider[] cs = Physics.OverlapSphere(tar, 0, Damageable.DamageableMask); // TODO: some other mask, maybe power?
                 if (cs.Length < 1) {
                     types[indicatorIndex].Instantiate(indicator.transform.position);
