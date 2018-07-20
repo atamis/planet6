@@ -30,7 +30,7 @@ public class LightHalo : MonoBehaviour {
 
     public void Update() {
         if (radius != lastRadius) {
-            SimpleQuad.ImmediateAdd(lightModel, radius, radius);
+            SimpleQuad.ImmediateAdd(lightModel, radius*2, radius*2);
             lastRadius = radius;
             var mr = lightModel.GetComponent<MeshRenderer>();
             mr.material = new Material(Shader.Find("Custom/Circle2"));
