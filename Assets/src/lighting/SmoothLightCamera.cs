@@ -18,7 +18,9 @@ public class SmoothLightCamera : MonoBehaviour {
         cam.clearFlags = CameraClearFlags.SolidColor;
         cam.backgroundColor = Color.black;
         cam.targetTexture = rt;
-            
+        go.AddComponent<CameraOrthographicWheelZoom>(); // Sets camera to ortho
+
+
         var slc = go.AddComponent<SmoothLightCamera>();
         
         return slc;
