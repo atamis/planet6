@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Building))]
 [RequireComponent(typeof(PowerBroadcaster))]
+[RequireComponent(typeof(PowerableLightHalo))]
 public class BaseBuilding : MonoBehaviour {
 
 	// Use this for initialization
@@ -21,6 +22,9 @@ public class BaseBuilding : MonoBehaviour {
         var damageable = GetComponent<Damageable>();
         damageable.invulnerable = true;
         damageable.damageCollider.radius = 1.5f;
+
+        var lightHalo = GetComponent<LightHalo>();
+        lightHalo.radius = 3.5f;
 	}
 	
 	// Update is called once per frame
